@@ -61,6 +61,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        curl https://cli-assets.heroku.com/install.sh | sh
                         heroku container:login
                         heroku create $STAGING || echo "Project already exist"
                         heroku container:push -a $STAGING web
@@ -81,6 +82,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        curl https://cli-assets.heroku.com/install.sh | sh
                         heroku container:login
                         heroku create $PRODUCTION || echo "Project already exist"
                         heroku container:push -a $PRODUCTION web
